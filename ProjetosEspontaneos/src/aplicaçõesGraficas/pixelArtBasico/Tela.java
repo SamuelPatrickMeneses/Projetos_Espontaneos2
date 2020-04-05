@@ -3,11 +3,12 @@ package aplicaçõesGraficas.pixelArtBasico;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JPanel;
 
-public class Tela extends JPanel implements MouseListener{
+public class Tela extends JPanel {
     public  int[][] desenho = new int[20][15];
     
     
@@ -45,36 +46,4 @@ public class Tela extends JPanel implements MouseListener{
       }    
       }
       
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-    int x = (int) e.getX()/43;
-    int y = (int) e.getY()/43;
-    System.out.println(x+"  "+y);
-    if(desenho[y][x] == 1){
-        desenho[y][x] = 0;
-    }else{
-        desenho[y][x] = 1;
-    }
-    Launcher.janela.repaint();
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-    
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-            }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-        
-    }
-}
+    }} 
