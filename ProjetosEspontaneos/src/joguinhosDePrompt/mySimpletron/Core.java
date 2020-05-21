@@ -16,6 +16,7 @@ public class Core {
     private final int BRANCHNEG = 41;
     private final int BRANCHZERO = 42;
     private final int HALT = 43;
+    
     private boolean key;
     private int pointer;
     private String collector;
@@ -26,6 +27,10 @@ public class Core {
             memory[x] = v[x];
         }
         key = true;
+    }
+    
+    public Core(SMLs sml){
+        this(sml.get());
     }
     
     public void rum(){
@@ -76,8 +81,8 @@ public class Core {
     
     public void read(int[] v){
         Scanner in = new Scanner(System.in);
-        System.out.println("Incira um valor inteiro de quatro digitoas");
-        this.memory[v[1]] = "" + in.nextInt();
+        System.out.println("Incira um valor inteiro de quatro digitoas para a posição: "+v[1]);
+        this.memory[v[1]] = Converter.catchString(v[1]);
     }
     
     public void write(int[] v){
@@ -93,22 +98,22 @@ public class Core {
     }
     
     public void add(int[] v){
-        v[0] =   Integer.parseInt(collector) +  Integer.parseInt(memory[v[1]]);
+        v[0] =   Converter.parseInt(collector) +  Converter.parseInt(memory[v[1]]);
         collector = ""+ v[0];
     }
     
     public void subtract(int[] v){
-      v[0] =   Integer.parseInt(collector) -  Integer.parseInt(memory[v[1]]);
+      v[0] =   Converter.parseInt(collector) -  Converter.parseInt(memory[v[1]]);
       collector = ""+ v[0];
     }
     
     public void divide(int[] v){
-      v[0] =   Integer.parseInt(collector) /  Integer.parseInt(memory[v[1]]);
+      v[0] =   Converter.parseInt(collector) /  Converter.parseInt(memory[v[1]]);
       collector = ""+ v[0];
     }
     
     public void multiply(int[] v){
-      v[0] =   Integer.parseInt(collector) *  Integer.parseInt(memory[v[1]]);
+      v[0] =   Converter.parseInt(collector) *  Converter.parseInt(memory[v[1]]);
       collector = ""+ v[0];
     }
     
@@ -117,13 +122,13 @@ public class Core {
     }
     
     public void branchNeg(int[] v){
-        if(Integer.parseInt(collector) < 0){
+        if(Converter.parseInt(collector) < 0){
           this.pointer = v[1];  
         }  
     }
     
     public void branchZero(int[] v){
-        if(Integer.parseInt(collector) == 0){
+        if(Converter.parseInt(collector) == 0){
           this.pointer = v[1];  
         }  
     }

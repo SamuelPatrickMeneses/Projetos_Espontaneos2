@@ -11,7 +11,8 @@ import java.util.Scanner;
 public class Texte {
     public static void main(String[] args){
         Scanner in = new Scanner(System.in);
-        Core c = new Core(SMLs.max);
+        SMLs sml = new SMLs(SMLs.max);
+        Core c = new Core(sml);
         c.rum();
     }
    
